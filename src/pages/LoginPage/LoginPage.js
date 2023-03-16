@@ -12,6 +12,17 @@ import {
 import group from "../../icons/group.png"
 
 export const LoginPage = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const onChangeEmail = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const onChangePassword = (event) => {
+        setPassword(event.target.value)
+    }
+
     return (
         <Flex
             minH={'100vh'}
@@ -40,10 +51,10 @@ export const LoginPage = () => {
                     </Stack>
                     <Stack spacing={2} margin={'50px'}>
                         <FormControl id="email">
-                            <Input type="email" placeholder='E-mail' />
+                            <Input type="email" placeholder='E-mail' value={email} onChangeEmail={onChangeEmail}/>
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password" placeholder='Senha' />
+                            <Input type="password" placeholder='Senha' value={password} onChangePassword={onChangePassword}/>
                         </FormControl>
                         <Stack spacing={3}>
                             <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'}>
