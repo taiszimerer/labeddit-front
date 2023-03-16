@@ -10,6 +10,7 @@ import {
     Image
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
+import { useState } from 'react';
 
 export const LoginPage = () => {
     const [email, setEmail] = useState("")
@@ -23,6 +24,11 @@ export const LoginPage = () => {
         setPassword(event.target.value)
     }
 
+    const login = () => {
+        console.log(email)
+        console.log(password)
+    }
+
     return (
         <Flex
             minH={'100vh'}
@@ -30,12 +36,7 @@ export const LoginPage = () => {
             justify={'center'}
             bg={'#E5E5E5'}>
             <Stack spacing={8} maxW={'lg'} py={12} px={6}>
-                <Box
-                    rounded={'lg'}
-                    bg={'#FFFFFF'}
-                    p={8}
-                    align={'center'}
-                >
+                <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
                     <Stack marginTop={'30px'}>
                         <Image
                             src={group}
@@ -51,13 +52,13 @@ export const LoginPage = () => {
                     </Stack>
                     <Stack spacing={2} margin={'50px'}>
                         <FormControl id="email">
-                            <Input type="email" placeholder='E-mail' value={email} onChangeEmail={onChangeEmail}/>
+                            <Input type="email" placeholder='E-mail' onChangeEmail={onChangeEmail} />
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password" placeholder='Senha' value={password} onChangePassword={onChangePassword}/>
+                            <Input type="password" placeholder='Senha' onChangePassword={onChangePassword}/>
                         </FormControl>
                         <Stack spacing={3}>
-                            <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'}>
+                            <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'} onClick={login}>
                                 Continuar
                             </Button>
                             <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} >
