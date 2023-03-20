@@ -14,46 +14,57 @@ import group from "../../icons/group.png"
 import hour from "../../icons/hour.png"
 import icons from "../../icons/icons.jpg"
 import axios from 'axios'
-
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useNavigate } from 'react-router-dom';
 import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
+import { GlobalContext } from '../../contexts/GlobalContext';
+
 
 export const LoginPage = () => {
+
+    // const context = useContext(GlobalContext)
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false)  //começa false
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onChangeEmail = (event) => {
-        setEmail(event.target.value) 
+    const [form, setForm] = useState({
+        email: "",
+        password: ""
+    })
+
+    const onChangeForm = (event) => {
+        setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    const onChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
+    // useEffect(() => {
+    //     // if (context.isAuth) {
+    //         goToFeedPage(navigate)
+    //     // }
+    // })
 
     const login = async () => {
         try {
             setIsLoading(true)
             const body = {
-                email: email,
-                password: password
+                email: form.email,
+                password: form.password
             }
 
             const response = await axios.post(
                 `${BASE_URL}/user/login`, body
             )
 
-            // window.localStorage.setItem("token-labeddit", response.data.token)
-            // window.alert("login realizado com sucesso!")
-            goToFeedPage(navigate)
+            window.localStorage.setItem("token-labeddit", response.data.token)
+            window.alert("login realizado com sucesso!")
+
             setIsLoading(false)
+            // context.setIsAuth(true)
+
+            goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
-            // setIsLoading(false)
+            setIsLoading(false)
         }
     }
 
@@ -99,19 +110,27 @@ export const LoginPage = () => {
                     </Stack>
                     <Stack spacing={2} margin={'50px'}>
                         <FormControl id="email">
-                            <Input type="email" placeholder='E-mail' onChangeEmail={onChangeEmail} />
+                            <Input
+                                type="email"
+                                placeholder='E-mail'
+                                onChange={onChangeForm}
+                                name="email" />
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password" placeholder='Senha' onChangePassword={onChangePassword} />
-                        </FormControl>
+                            <Input 
+                                type="password"
+                                placeholder='Senha' 
+                                onChange={onChangeForm}
+                                name= "password"/>
+                           </FormControl>
                         <Stack spacing={3}>
                             <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'}
                                 onClick={login}>
                                 {isLoading ? <Spinner /> : "Continuar"}
                             </Button>
-                            <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} 
-                            onClick={goToSignupPage(navigate)}>
-                               Crie uma Conta!
+                            <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
+                               onClick={() => goToSignupPage(navigate)}>
+                                Crie uma Conta!
                             </Button>
                         </Stack>
                     </Stack>
