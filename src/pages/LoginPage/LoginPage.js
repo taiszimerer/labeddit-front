@@ -30,15 +30,21 @@ export const LoginPage = () => {
     }
 
     const login = async () => {
-     try {
-        const response = await axios.post(
-            `${BASE_URL}/user/login`
-        )
+        try {
+            const body = {
+                email: email,
+                password: password
+            }
 
-        console.log(response.data)
-     } catch {
+            const response = await axios.post(
+                `${BASE_URL}/users/login` , body
+            )
 
-     }
+            window.localStorage.setItem("token-labeddit", response.data.token)
+            window.alert("login realizado com sucesso!")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -58,13 +64,13 @@ export const LoginPage = () => {
                                 alt="icon-hour"
                             />
                         </Stack>
-                            <Stack>
-                                <Image
-                                    src={icons}
-                                    width={'70px'}
-                                    height={'25px'}
-                                    alt="icon-signal"
-                                />
+                        <Stack>
+                            <Image
+                                src={icons}
+                                width={'70px'}
+                                height={'25px'}
+                                alt="icon-signal"
+                            />
                         </Stack>
 
                     </Stack>
