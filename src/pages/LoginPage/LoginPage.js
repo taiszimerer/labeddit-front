@@ -21,7 +21,6 @@ import { useNavigate } from 'react-router-dom';
 import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 
 export const LoginPage = () => {
-
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)  //começa false
 
@@ -29,7 +28,7 @@ export const LoginPage = () => {
     const [password, setPassword] = useState("")
 
     const onChangeEmail = (event) => {
-        setEmail(event.target.value)
+        setEmail(event.target.value) 
     }
 
     const onChangePassword = (event) => {
@@ -45,16 +44,16 @@ export const LoginPage = () => {
             }
 
             const response = await axios.post(
-                `${BASE_URL}/users/login`, body
+                `${BASE_URL}/user/login`, body
             )
 
-            window.localStorage.setItem("token-labeddit", response.data.token)
-            window.alert("login realizado com sucesso!")
+            // window.localStorage.setItem("token-labeddit", response.data.token)
+            // window.alert("login realizado com sucesso!")
             goToFeedPage(navigate)
             setIsLoading(false)
         } catch (error) {
             console.log(error)
-            setIsLoading(false)
+            // setIsLoading(false)
         }
     }
 
@@ -112,7 +111,7 @@ export const LoginPage = () => {
                             </Button>
                             <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} 
                             onClick={goToSignupPage(navigate)}>
-                                Crie uma Conta!
+                               Crie uma Conta!
                             </Button>
                         </Stack>
                     </Stack>

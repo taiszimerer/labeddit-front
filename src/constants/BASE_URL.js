@@ -1,2 +1,2 @@
-export const BASE_URL = 'https://documenter.getpostman.com/view/24460855/2s93CHtaAp'
+export const BASE_URL = 'https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro'
 //link da API colocar aqui futuramente
