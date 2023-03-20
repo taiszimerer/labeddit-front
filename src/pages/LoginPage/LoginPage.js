@@ -12,8 +12,10 @@ import {
 import group from "../../icons/group.png"
 import hour from "../../icons/hour.png"
 import icons from "../../icons/icons.jpg"
+import axios from 'axios'
 
 import { useState } from 'react';
+import { BASE_URL } from '../../constants/BASE_URL';
 
 export const LoginPage = () => {
     const [email, setEmail] = useState("")
@@ -27,9 +29,16 @@ export const LoginPage = () => {
         setPassword(event.target.value)
     }
 
-    const login = () => {
-        console.log(email)
-        console.log(password)
+    const login = async () => {
+     try {
+        const response = await axios.post(
+            `${BASE_URL}/user/login`
+        )
+
+        console.log(response.data)
+     } catch {
+
+     }
     }
 
     return (
