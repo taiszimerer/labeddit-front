@@ -7,7 +7,8 @@ import {
     Button,
     Heading,
     Text,
-    Image
+    Image,
+    Spinner
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
 import hour from "../../icons/hour.png"
@@ -16,8 +17,14 @@ import axios from 'axios'
 
 import { useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
+import { useNavigate } from 'react-router-dom';
+import { goToFeedPage } from '../../routes/coordinator';
 
 export const LoginPage = () => {
+
+    const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(false)  //começa false
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -31,19 +38,23 @@ export const LoginPage = () => {
 
     const login = async () => {
         try {
+            setIsLoading(true)
             const body = {
                 email: email,
                 password: password
             }
 
             const response = await axios.post(
-                `${BASE_URL}/users/login` , body
+                `${BASE_URL}/users/login`, body
             )
 
             window.localStorage.setItem("token-labeddit", response.data.token)
             window.alert("login realizado com sucesso!")
+            goToFeedPage(navigate)
+            setIsLoading(false)
         } catch (error) {
             console.log(error)
+            setIsLoading(false)
         }
     }
 
@@ -95,8 +106,9 @@ export const LoginPage = () => {
                             <Input type="password" placeholder='Senha' onChangePassword={onChangePassword} />
                         </FormControl>
                         <Stack spacing={3}>
-                            <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'} onClick={login}>
-                                Continuar
+                            <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'}
+                                onClick={login}>
+                                {isLoading ? <Spinner /> : "Continuar"}
                             </Button>
                             <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} >
                                 Crie uma Conta!
