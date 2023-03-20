@@ -18,7 +18,7 @@ import axios from 'axios'
 import { useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useNavigate } from 'react-router-dom';
-import { goToFeedPage } from '../../routes/coordinator';
+import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 
 export const LoginPage = () => {
 
@@ -110,7 +110,8 @@ export const LoginPage = () => {
                                 onClick={login}>
                                 {isLoading ? <Spinner /> : "Continuar"}
                             </Button>
-                            <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} >
+                            <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'} 
+                            onClick={goToSignupPage(navigate)}>
                                 Crie uma Conta!
                             </Button>
                         </Stack>
