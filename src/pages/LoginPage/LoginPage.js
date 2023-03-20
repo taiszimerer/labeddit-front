@@ -6,10 +6,13 @@ import {
     Stack,
     Button,
     Heading,
-    Text, 
+    Text,
     Image
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
+import hour from "../../icons/hour.png"
+import icons from "../../icons/icons.jpg"
+
 import { useState } from 'react';
 
 export const LoginPage = () => {
@@ -37,12 +40,31 @@ export const LoginPage = () => {
             bg={'#E5E5E5'}>
             <Stack spacing={8} maxW={'lg'} py={12} px={6}>
                 <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
+                    <Stack flexDirection={'row'} >
+                        <Stack flexDirection={'row'} marginRight={'190px'} alignItems={'center'}>
+                            <Image
+                                src={hour}
+                                width={'7'}
+                                height={'3'}
+                                alt="icon-hour"
+                            />
+                        </Stack>
+                            <Stack>
+                                <Image
+                                    src={icons}
+                                    width={'70px'}
+                                    height={'25px'}
+                                    alt="icon-signal"
+                                />
+                        </Stack>
+
+                    </Stack>
                     <Stack marginTop={'30px'}>
                         <Image
                             src={group}
                             width={'70px'}
                             height={'50px'}
-                            marginLeft={'110px'}
+                            marginLeft={'125px'}
                             alt="icon-labEddit"
                         />
                         <Heading fontSize={'36px'}>LabEddit</Heading>
@@ -55,7 +77,7 @@ export const LoginPage = () => {
                             <Input type="email" placeholder='E-mail' onChangeEmail={onChangeEmail} />
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password" placeholder='Senha' onChangePassword={onChangePassword}/>
+                            <Input type="password" placeholder='Senha' onChangePassword={onChangePassword} />
                         </FormControl>
                         <Stack spacing={3}>
                             <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'} onClick={login}>
