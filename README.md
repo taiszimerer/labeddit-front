@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Labeddit Front End 
+
+link repositório Labeddit Backend: https://github.com/taiszimerer/labeddit-backend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
