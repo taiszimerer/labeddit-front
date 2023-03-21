@@ -8,7 +8,7 @@ const Header = () => {
         <div>
             <Flex >
                 <Stack flexDirection={'row'} maxW={'lg'} py={12} px={-5} align={'center'}>
-                    <Stack flexDirection={'row'} marginRight={'180px'} >
+                    <Stack flexDirection={'row'} marginRight={'180px'}>
                         <Image
                             marginTop={'-55px'}
                             src={hour}
