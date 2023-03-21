@@ -20,39 +20,46 @@ import Header from '../../components/Header';
 
 export const SignupPage = () => {
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(false)  //começa false
 
-    const [nickname, setNickName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onChangeEmail = (event) => {
-        setEmail(event.target.value)
+    const [form, setForm] = useState({
+        nickname: "",
+        email: "",
+        password: ""
+    })
+
+    const onChangeForm = (event) => {
+        setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    const onChangePassword = (event) => {
-        setPassword(event.target.value)
-    }
+    // useEffect(() => {
+    //     // if (context.isAuth) {
+    //         goToFeedPage(navigate)
+    //     // }
+    // })
 
-    const login = async () => {
+    const signup = async () => {
         try {
             setIsLoading(true)
             const body = {
-                email: email,
-                password: password
+                nickname: form.nickname,
+                email: form.email,
+                password: form.password
             }
 
             const response = await axios.post(
-                `${BASE_URL}/user/login`, body
+                `${BASE_URL}/user/signup`, body
             )
 
-            // window.localStorage.setItem("token-labeddit", response.data.token)
-            // window.alert("login realizado com sucesso!")
-            goToFeedPage(navigate)
+            window.localStorage.setItem("token-labeddit", response.data.token)
             setIsLoading(false)
+            // context.setIsAuth(true)
+
+            goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
-            // setIsLoading(false)
+            setIsLoading(false)
         }
     }
 
@@ -91,13 +98,13 @@ export const SignupPage = () => {
                     <Heading fontSize={'36px'} margin={'20px -10px 100px'} >Olá, boas vindas ao LabEddit ;)</Heading>
                     <Stack spacing={2} margin={'30px'}>
                         <FormControl id="nickname">
-                            <Input type="nickname" placeholder='Apelido' autoComplete='off' />
+                            <Input type="text" name="nickname" placeholder='Apelido' autoComplete='off' value={form.nickname} onChange={onChangeForm} />
                         </FormControl>
                         <FormControl id="email">
-                            <Input type="email" placeholder='E-mail' autoComplete='off' />
+                            <Input type="text" name="email" placeholder='E-mail' autoComplete='off'  value={form.email} onChange={onChangeForm}/>
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password" placeholder='Senha' autoComplete='off' />
+                            <Input type="password"  name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
                         </FormControl>
                     </Stack>
                     <Stack spacing={2} marginTop={'40px'}>
