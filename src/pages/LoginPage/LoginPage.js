@@ -75,7 +75,7 @@ export const LoginPage = () => {
                 align={'center'}
                 justify={'center'}
                 bg={'#E5E5E5'}>
-                <Stack spacing={8} maxW={'100vw'} py={12} px={6}>
+                <Stack spacing={8} maxW={'428px'} py={12} px={6}>
                     <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
                         <Header />
                         <Stack marginTop={'30px'}>
@@ -111,7 +111,7 @@ export const LoginPage = () => {
                                     onClick={login}>
                                     {isLoading ? <Spinner /> : "Continuar"}
                                 </Button>
-                                <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
+                                <Button bg={'#ff7141'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
                                     onClick={() => goToSignupPage(navigate)}>
                                     Crie uma Conta!
                                 </Button>
