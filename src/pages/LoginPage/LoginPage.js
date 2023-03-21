@@ -76,7 +76,7 @@ export const LoginPage = () => {
                 justify={'center'}
                 bg={'#E5E5E5'}>
                 <Stack spacing={8} maxW={'428px'} py={12} px={6}>
-                    <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
+                    <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'} width={'380px'} height={'700px'}>
                         <Header />
                         <Stack marginTop={'30px'}>
                             <Image
@@ -107,7 +107,7 @@ export const LoginPage = () => {
                                     name="password" />
                             </FormControl>
                             <Stack spacing={3}>
-                                <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'30px'}
+                                <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'40px'}
                                     onClick={login}>
                                     {isLoading ? <Spinner /> : "Continuar"}
                                 </Button>
@@ -115,7 +115,7 @@ export const LoginPage = () => {
                                     onClick={() => goToSignupPage(navigate)}>
                                     Crie uma Conta!
                                 </Button>
-                            </Stack>
+                            </Stack >
                         </Stack>
                     </Box>
                 </Stack>
