@@ -13,11 +13,11 @@ import {
 import group from "../../icons/group.png"
 
 import axios from 'axios'
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useNavigate } from 'react-router-dom';
 import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
-import { GlobalContext } from '../../contexts/GlobalContext';
+// import { GlobalContext } from '../../contexts/GlobalContext';
 import Header from '../../components/Header';
 
 
@@ -75,7 +75,7 @@ export const LoginPage = () => {
                 align={'center'}
                 justify={'center'}
                 bg={'#E5E5E5'}>
-                <Stack spacing={8} maxW={'lg'} py={12} px={6}>
+                <Stack spacing={8} maxW={'100vw'} py={12} px={6}>
                     <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
                         <Header />
                         <Stack marginTop={'30px'}>
@@ -83,7 +83,7 @@ export const LoginPage = () => {
                                 src={group}
                                 width={'70px'}
                                 height={'50px'}
-                                marginLeft={'125px'}
+                                marginLeft={'120px'}
                                 alt="icon-labEddit"
                             />
                             <Heading fontSize={'36px'}>LabEddit</Heading>
@@ -91,7 +91,7 @@ export const LoginPage = () => {
                                 O projeto de rede Social da Labenu
                             </Text>
                         </Stack>
-                        <Stack spacing={2} margin={'50px'}>
+                        <Stack spacing={2} margin={'30px'}>
                             <FormControl id="email">
                                 <Input
                                     type="email"

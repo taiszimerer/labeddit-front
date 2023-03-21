@@ -6,8 +6,9 @@ import {
     Stack,
     Button,
     Image,
+    Heading,
     Text,
-    Link
+    Link, Checkbox
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
 import axios from 'axios'
@@ -61,17 +62,17 @@ export const SignupPage = () => {
             align={'center'}
             justify={'center'}
             bg={'#E5E5E5'}>
-            <Stack spacing={8} maxW={'lg'} py={12} px={6}>
-                <Box rounded={'lg'} bg={'#FFFFFF'} p={8} align={'center'}>
+            <Stack spacing={8} maxW={'428px'} py={12} px={6}>
+                <Box rounded={'lg'} bg={'#FFFFFF'} p={8} >
                     <Header />
-                    <Stack marginTop={'10px'} marginLeft={'-20px'} bg={'#E5E5E5'} flexDirection={'row'} width={'428px'} height={'50px'} align={'center'}>
+                    <Stack marginLeft={'-32px'} marginTop={'-80px'} bg={'#E5E5E5'} flexDirection={'row'} height={'50px'} width={'400px'} align={'center'}>
                         <Stack >
                             <Image
                                 src={group}
-                                width={'30px'}
-                                height={'20px'}
+                                width={'28.6px'}
+                                height={'28px'}
                                 marginTop={'10px'}
-                                marginLeft={'190px'}
+                                marginLeft={'160px'}
                                 alt="icon-labEddit"
                             />
                         </Stack>
@@ -81,10 +82,14 @@ export const SignupPage = () => {
                                 color={'#4088CB'}
                                 fontWeight={'600'}
                                 marginLeft={'120px'}
+                                marginRight={'10px'}
+                                onClick={() => goToLoginPage(navigate)}
+                                cursor={'pointer'}
                             > Entrar</Link>
                         </Stack>
                     </Stack>
-                    <Stack spacing={2} margin={'50px'}>
+                    <Heading fontSize={'36px'} margin={'20px -10px 100px'} >Olá, boas vindas ao LabEddit ;)</Heading>
+                    <Stack spacing={2} margin={'30px'}>
                         <FormControl id="nickname">
                             <Input type="nickname" placeholder='Apelido' autoComplete='off' />
                         </FormControl>
@@ -94,15 +99,18 @@ export const SignupPage = () => {
                         <FormControl id="password">
                             <Input type="password" placeholder='Senha' autoComplete='off' />
                         </FormControl>
-                        <Stack spacing={3}>
-                            <Text fontSize={'14px'} color={'#000000'} align={'center'} marginTop={'10px'}>
-                                Ao continuar, você concorda com o nosso <link color='#4088CB'>Contrato de usuário</link> e nossa <link color='#4088CB'>Politica de Privacidade</link>
-                            </Text>
-                            <Button bg={'#F9B24E'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
-                                onClick={() => goToLoginPage(navigate)}>
-                                Cadastrar
-                            </Button>
-                        </Stack>
+                    </Stack>
+                    <Stack spacing={2} marginTop={'40px'}>
+                        <Text fontSize={'14px'} color={'#000000'}>
+                            Ao continuar, você concorda com o nosso <Link color='#4088CB'>Contrato de usuário</Link> e nossa <Link color='#4088CB'>Politica de Privacidade</Link>
+                        </Text>
+                        <Text fontSize={'14px'} color={'#000000'}> <Checkbox marginTop={'5px'}> </Checkbox>Eu concordo em receber e-mails sobre coisas legais no LabEddit </Text> 
+                    </Stack>
+                    <Stack spacing={2} margin={'30px'}>
+                        <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
+                            onClick={() => goToFeedPage(navigate)}>
+                            Cadastrar
+                        </Button>
                     </Stack>
                 </Box>
             </Stack>
