@@ -101,21 +101,21 @@ export const SignupPage = () => {
                             <Input type="text" name="nickname" placeholder='Apelido' autoComplete='off' value={form.nickname} onChange={onChangeForm} />
                         </FormControl>
                         <FormControl id="email">
-                            <Input type="text" name="email" placeholder='E-mail' autoComplete='off'  value={form.email} onChange={onChangeForm}/>
+                            <Input type="text" name="email" placeholder='E-mail' autoComplete='off' value={form.email} onChange={onChangeForm} />
                         </FormControl>
                         <FormControl id="password">
-                            <Input type="password"  name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
+                            <Input type="password" name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
                         </FormControl>
                     </Stack>
                     <Stack spacing={2} marginTop={'40px'}>
                         <Text fontSize={'14px'} color={'#000000'} marginRight={'-3px'}>
                             Ao continuar, você concorda com o nosso <Link color='#4088CB'>Contrato de usuário</Link> e nossa <Link color='#4088CB'>Politica de Privacidade</Link>
                         </Text>
-                        <Text fontSize={'14px'} color={'#000000'}> <Checkbox marginTop={'5px'}> </Checkbox>Eu concordo em receber e-mails sobre coisas legais no LabEddit </Text> 
+                        <Text fontSize={'14px'} color={'#000000'}> <Checkbox marginTop={'5px'}> </Checkbox>Eu concordo em receber e-mails sobre coisas legais no LabEddit </Text>
                     </Stack>
                     <Stack spacing={2} margin={'30px'}>
                         <Button bg={'#ff7141'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
-                            onClick={() => goToFeedPage(navigate)}>
+                            onClick={signup}>
                             Cadastrar
                         </Button>
                     </Stack>
