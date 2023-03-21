@@ -7,8 +7,8 @@ const Header = () => {
     return (
         <div>
             <Flex >
-                <Stack flexDirection={'row'} maxW={'lg'} py={12} px={-5} align={'center'}>
-                    <Stack flexDirection={'row'} marginRight={'180px'}>
+                <Stack flexDirection={'row'} maxW={'428px'} py={12} px={-5} align={'center'}>
+                    <Stack flexDirection={'row'} marginRight={'230px'}>
                         <Image
                             marginTop={'-55px'}
                             src={hour}
@@ -26,7 +26,6 @@ const Header = () => {
                             alt="icon-signal"
                         />
                     </Stack>
-
                 </Stack>
             </Flex>
 
