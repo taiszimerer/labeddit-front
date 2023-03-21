@@ -93,18 +93,10 @@ export const LoginPage = () => {
                         </Stack>
                         <Stack spacing={2} margin={'30px'}>
                             <FormControl id="email">
-                                <Input
-                                    type="email"
-                                    placeholder='E-mail'
-                                    onChange={onChangeForm}
-                                    name="email" />
+                            <Input type="text" name="email" placeholder='E-mail' autoComplete='off'  value={form.email} onChange={onChangeForm}/>
                             </FormControl>
                             <FormControl id="password">
-                                <Input
-                                    type="password"
-                                    placeholder='Senha'
-                                    onChange={onChangeForm}
-                                    name="password" />
+                            <Input type="password"  name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
                             </FormControl>
                             <Stack spacing={3}>
                                 <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'40px'}
