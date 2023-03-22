@@ -87,6 +87,19 @@ export const PostPage = () => {
 
                     <Text align={'center'} color={'#FF6489'}> _________________________________________ </Text>
                     
+                    <Box spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                        <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: astronauta02</Text>
+
+                        <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'}>  Não posso falar por todos, mas usar Linux ajudou meu pc a ter uma performance melhor (e evitou que eu precisasse comprar um novo) </Text>
+
+                        <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
+                            <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
+                                <Image src={setaparacima} width={'18px'} />
+                                <Text fontSize={'9.8px'} color={'#6F6F6F'} >1.2K</Text>
+                                <Image src={setaparabaixo} width={'18px'} />
+                            </Stack>
+                        </Stack>
+                    </Box>
                 </Box>
             </Stack>
         </Flex>
