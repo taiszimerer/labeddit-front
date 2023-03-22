@@ -16,6 +16,7 @@ import coment from "../../icons/coment.png"
 import { useNavigate } from 'react-router-dom';
 import { goToLoginPage, goToPostPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
+import { useEffect } from 'react';
 
 export const FeedPage = () => {
     const navigate = useNavigate()
@@ -24,6 +25,14 @@ export const FeedPage = () => {
         window.localStorage.removeItem("token-labeddit")
         goToLoginPage(navigate)
     }
+
+    useEffect(() => {
+        const token = window.localStorage.getItem("token-labeddit")
+
+        if(!token){
+            goToLoginPage(navigate)
+        }
+    }, [])
 
     return (
         <Flex
