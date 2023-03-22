@@ -66,7 +66,7 @@ export const FeedPage = () => {
                     </Stack>
 
                     <Text align={'center'} color={'#FF6489'}> _________________________________________ </Text>
-                    <Box onClick={() => goToPostPage(navigate)} cursor={'pointer'} spacing={2} margin={'10px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                    <Box onClick={() => goToPostPage(navigate)} spacing={2} margin={'10px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
                         <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: margarida03</Text>
 
                         <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'}>  Por que a maioria dos desenvolvedores usam Linux? ou as empresas de tecnologia usam Linux? </Text>
@@ -83,7 +83,6 @@ export const FeedPage = () => {
                                 <Text fontSize={'9.8px'} color={'#6F6F6F'}>1.2K</Text>
                             </Stack>
                         </Stack>
-
                     </Box>
                 </Box>
             </Stack>
