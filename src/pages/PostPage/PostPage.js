@@ -20,6 +20,11 @@ import Header from '../../components/Header';
 export const PostPage = () => {
     const navigate = useNavigate()
 
+    const logout = () =>{
+        window.localStorage.removeItem("token-labeddit")
+        goToLoginPage(navigate)
+    }
+
     return (
         <Flex
             minH={'100vh'}
@@ -47,7 +52,7 @@ export const PostPage = () => {
                                 fontWeight={'600'}
                                 marginLeft={'120px'}
                                 marginRight={'10px'}
-                                onClick={() => goToLoginPage(navigate)}
+                                onClick={logout}
                                 cursor={'pointer'}
                             > Logout</Link>
                         </Stack>
