@@ -53,7 +53,7 @@ export const FeedPage = () => {
                         </Stack>
                     </Stack>
 
-                    <Stack spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'50px'} >
+                    <Stack spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'30px'} >
                         <FormControl id="new-post">
                             <Input type="text" name="nickname" placeholder='Escreva seu post...' autoComplete='off' fontSize={'18px'} />
                         </FormControl>
