@@ -8,7 +8,9 @@ import {
     Image,
     Heading,
     Text,
-    Link, Checkbox
+    Link,
+    Spinner,
+    Checkbox
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
 import axios from 'axios'
@@ -116,7 +118,7 @@ export const SignupPage = () => {
                     <Stack spacing={2} margin={'30px'}>
                         <Button bg={'#ff7141'} color={'white'} borderRadius={'20px'} fontSize={'18px'}
                             onClick={signup}>
-                            Cadastrar
+                            {isLoading ? <Spinner /> : "Cadastrar"}
                         </Button>
                     </Stack>
                 </Box>
