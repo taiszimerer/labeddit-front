@@ -30,11 +30,6 @@ Para rodar o projeto localmente, é necessário instalar as dependências. Para 
 Após a instalação das dependências, execute o seguinte comando para rodar o projeto:
 'Npm start' 
 
-
-## Contribuição
-
-Não há contribuidores externos para este projeto. Para reportar erros ou problemas, abra uma issue no repositório.
-
 ## Autoria e Contato
 
 Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
