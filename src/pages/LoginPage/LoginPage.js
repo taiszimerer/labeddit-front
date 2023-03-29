@@ -16,13 +16,11 @@ import { useContext, useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useNavigate } from 'react-router-dom';
 import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
-import { GlobalContext } from '../../contexts/GlobalContext';
 import Header from '../../components/Header';
 
 
 export const LoginPage = () => {
-    const context = useContext(GlobalContext)
-    console.log(context)
+
     const navigate = useNavigate()
 
     const [isLoading, setIsLoading] = useState(false)
@@ -37,7 +35,7 @@ export const LoginPage = () => {
     }
 
     // useEffect(() => {
-    //     if (context.isAuth) {
+    //     if (context.isAuth) {     se a pessoa esta logada...
     //         goToFeedPage(navigate)
     //     }
     // })

@@ -1,9 +1,9 @@
 export const goToFeedPage = (navigator) => {
-    navigator('/');
+    navigator('/feed');
 }
 
 export const goToLoginPage = (navigator) => {
-    navigator('/login');
+    navigator('/');
 }
 
 export const goToSignupPage = (navigator) => {
