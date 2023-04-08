@@ -30,10 +30,6 @@ Após a instalação das dependências, execute o seguinte comando para rodar o 
 'Npm start' 
 ```
 
-## Autoria e Contato
-
-Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
-
 ## Status do Projeto
 Este projeto está em desenvolvimento.
 
@@ -47,6 +43,10 @@ t-labeddit.surge.sh
 
 ## Documentação API: 
 https://documenter.getpostman.com/view/24460855/2s93XsWkhs
+
+## Autoria e Contato
+
+Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
 
 
 
