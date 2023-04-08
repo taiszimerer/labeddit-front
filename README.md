@@ -9,14 +9,10 @@
 Labeddit é uma aplicação de rede social de posts e interações entre usuários, com design de App móbile first. Os usuários podem fazer login ou criar um novo cadastro para acessar o feed de posts, onde podem ver os posts de outros usuários e criar seus próprios posts. A aplicação também permite aos usuários responder e interagir com as publicações.
 
 ## Tecnologias
--ReactJs
--Chakra UI
--JavaScript 
--Criação de API e integração do front com o backend.
--SQL
--Autenticação
--TypeScript
--POO
+- ReactJs
+- Chakra UI
+- JavaScript 
+- Criação de API e integração do front com o backend.
 
 ## Como Usar
 
@@ -25,21 +21,33 @@ Para utilizar a aplicação, basta acessar o link do deploy t-labeddit.surge.sh.
 ## Instalação
 
 Para rodar o projeto localmente, é necessário instalar as dependências. Para fazer isso, execute o seguinte comando na raiz do projeto:
+```bash
 'Npm i'
+```
 
 Após a instalação das dependências, execute o seguinte comando para rodar o projeto:
+```bash
 'Npm start' 
+```
 
 ## Autoria e Contato
 
 Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
 
 ## Status do Projeto
-
 Este projeto está em desenvolvimento.
 
+## Repositório Frontend do projeto:
+https://github.com/taiszimerer/labeddit-front
 
-link repositório Labeddit Backend: https://github.com/taiszimerer/labeddit-backend
-Deploy labeddit Front-End: t-labeddit.surge.sh
+## Deploy Frontend do projeto: 
+t-labeddit.surge.sh
+
+## Deploy Backend do projeto:
+
+## Documentação API: 
+https://documenter.getpostman.com/view/24460855/2s93XsWkhs
+
+
 
 
