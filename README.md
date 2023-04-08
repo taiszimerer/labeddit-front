@@ -1,8 +1,8 @@
-
-# Labeddit - Full Stack - FrontEnd
-
 [![Badge](https://img.shields.io/badge/author-Tais%20Marinheiro%20Zimerer-blue)](https://github.com/taiszimerer)
 [![Badge](https://img.shields.io/badge/license-N/A-red)]()
+
+# Labeddit - FrontEnd
+Este é o front-end do projeto Labeddit - Full Stack.
 
 ## Descrição
 
