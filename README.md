@@ -40,6 +40,9 @@ https://github.com/taiszimerer/labeddit-front
 #### Deploy Frontend do projeto: 
 t-labeddit.surge.sh
 
+### Repositorio backend do projeto: 
+https://github.com/taiszimerer/labeddit-backend
+
 #### Deploy Backend do projeto:
 
 #### Documentação API: 
