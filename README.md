@@ -1,72 +1,62 @@
-# Labeddit Front End 
+[![Badge](https://img.shields.io/badge/author-Tais%20Marinheiro%20Zimerer-blue)](https://github.com/taiszimerer)
+[![Badge](https://img.shields.io/badge/license-N/A-red)]()
 
-link repositório Labeddit Backend: https://github.com/taiszimerer/labeddit-backend
+# Labeddit - FrontEnd
+Este é o front-end do projeto Labeddit - Full Stack.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição
 
-## Available Scripts
+Labeddit é uma aplicação de rede social de posts e interações entre usuários, com design de App móbile first. Os usuários podem fazer login ou criar um novo cadastro para acessar o feed de posts, onde podem ver os posts de outros usuários e criar seus próprios posts. A aplicação também permite aos usuários responder e interagir com as publicações.
 
-In the project directory, you can run:
+## Tecnologias
+- ReactJs
+- Chakra UI
+- JavaScript 
+- Criação de API e integração do front com o backend.
 
-### `npm start`
+## Como Usar
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para utilizar a aplicação, basta acessar o link do deploy t-labeddit.surge.sh. Ao acessar, o usuário deve fazer login ou criar uma nova conta para acessar o feed de posts. No feed de posts, é possível ver as publicações dos outros usuários e criar um novo post. Ao clicar em uma publicação, o usuário pode responder e interagir com aquela publicação específica.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instalação
 
-### `npm test`
+Para rodar o projeto localmente, é necessário instalar as dependências. Para fazer isso, execute o seguinte comando na raiz do projeto:
+```bash
+'Npm i'
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Após a instalação das dependências, execute o seguinte comando para rodar o projeto:
+```bash
+'Npm start' 
+```
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Status do Projeto
+Este projeto está em desenvolvimento.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Repositório Frontend do projeto:
+https://github.com/taiszimerer/labeddit-front
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Deploy Frontend do projeto: 
+t-labeddit.surge.sh
 
-### `npm run eject`
+### Repositorio backend do projeto: 
+https://github.com/taiszimerer/labeddit-backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Deploy Backend do projeto:
+https://labeddit-backend-934e.onrender.com/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Documentação API: 
+https://documenter.getpostman.com/view/24460855/2s93XsWkhs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Autoria e Contato
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  ### Considerações Finais
+ Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando ReactJs, JavaScript, Chakra Ui como biblioteca para o layout e integração com a API desenvolvida por mim no Backend do projeto. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
