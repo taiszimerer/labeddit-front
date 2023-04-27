@@ -44,6 +44,7 @@ t-labeddit.surge.sh
 https://github.com/taiszimerer/labeddit-backend
 
 #### Deploy Backend do projeto:
+https://labeddit-backend-934e.onrender.com/
 
 #### Documentação API: 
 https://documenter.getpostman.com/view/24460855/2s93XsWkhs
