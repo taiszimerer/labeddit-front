@@ -12,12 +12,11 @@ import {
 } from '@chakra-ui/react';
 import group from "../../icons/group.png"
 import axios from 'axios'
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { BASE_URL } from '../../constants/BASE_URL';
 import { useNavigate } from 'react-router-dom';
 import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
-
 
 export const LoginPage = () => {
 
