@@ -1,2 +1,1 @@
-export const BASE_URL = 'https://documenter.getpostman.com/view/21151478/2s8YzMZRju#intro'
-//link da API colocar aqui futuramente
+export const BASE_URL = 'https://labeddit-backend-934e.onrender.com/'
