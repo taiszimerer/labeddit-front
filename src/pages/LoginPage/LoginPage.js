@@ -19,6 +19,7 @@ import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
 
 export const LoginPage = () => {
+    //const context = useContext(GlobalContext)
 
     const navigate = useNavigate()
 
@@ -48,7 +49,7 @@ export const LoginPage = () => {
             }
 
             const response = await axios.post(
-                `${BASE_URL}/user/login`, body
+                `${BASE_URL}/users/login`, body
             )
 
             window.localStorage.setItem("token-labeddit", response.data.token)
@@ -56,11 +57,11 @@ export const LoginPage = () => {
 
             setIsLoading(false)
             // context.setIsAuth(true)
-
             goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
             setIsLoading(false)
+            window.alert("E-mail ou senha não conferem")
         }
     }
 
