@@ -19,12 +19,9 @@ import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
 
 export const LoginPage = () => {
-    //const context = useContext(GlobalContext)
-
+    const context = useContext(GlobalContext)
     const navigate = useNavigate()
-
     const [isLoading, setIsLoading] = useState(false)
-
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -34,11 +31,11 @@ export const LoginPage = () => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    // useEffect(() => {
-    //     if (context.isAuth) {     se a pessoa esta logada...
-    //         goToFeedPage(navigate)
-    //     }
-    // })
+    useEffect(() => {
+        if (context.isAuth) {     //se a pessoa esta logada...
+            goToFeedPage(navigate)
+        }
+    })
 
     const login = async () => {
         try {
@@ -56,7 +53,7 @@ export const LoginPage = () => {
             window.alert("login realizado com sucesso!")
 
             setIsLoading(false)
-            // context.setIsAuth(true)
+            context.setIsAuth(true)
             goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
@@ -90,10 +87,10 @@ export const LoginPage = () => {
                         </Stack>
                         <Stack spacing={2} margin={'30px'}>
                             <FormControl id="email">
-                            <Input type="text" name="email" placeholder='E-mail' autoComplete='off'  value={form.email} onChange={onChangeForm}/>
+                                <Input type="text" name="email" placeholder='E-mail' autoComplete='off' value={form.email} onChange={onChangeForm} />
                             </FormControl>
                             <FormControl id="password">
-                            <Input type="password"  name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
+                                <Input type="password" name="password" placeholder='Senha' autoComplete='off' value={form.password} onChange={onChangeForm} />
                             </FormControl>
                             <Stack spacing={3}>
                                 <Button bg={'#FF6489'} color={'white'} borderRadius={'20px'} marginTop={'40px'}
@@ -109,6 +106,6 @@ export const LoginPage = () => {
                     </Box>
                 </Stack>
             </Flex>
-            </>
+        </>
     );
 }
