@@ -26,7 +26,7 @@ export const SignupPage = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const [form, setForm] = useState({
-        nickname: "",
+        name: "",
         email: "",
         password: ""
     })
@@ -45,23 +45,24 @@ export const SignupPage = () => {
         try {
             setIsLoading(true)
             const body = {
-                nickname: form.nickname,
+                name: form.name,
                 email: form.email,
                 password: form.password
             }
 
             const response = await axios.post(
-                `${BASE_URL}/user/signup`, body
+                `${BASE_URL}/users/signup`, body
             )
 
             window.localStorage.setItem("token-labeddit", response.data.token)
+            window.alert("Cadastro realizado com sucesso!")
             setIsLoading(false)
             // context.setIsAuth(true)
-
             goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
             setIsLoading(false)
+            window.alert("Erro ao realizar cadastro")
         }
     }
 
@@ -100,7 +101,7 @@ export const SignupPage = () => {
                     <Heading fontSize={'36px'} margin={'20px -10px 100px'} >Olá, boas vindas ao LabEddit ;)</Heading>
                     <Stack spacing={2} margin={'30px'}>
                         <FormControl id="nickname">
-                            <Input type="text" name="nickname" placeholder='Apelido' autoComplete='off' value={form.nickname} onChange={onChangeForm} />
+                            <Input type="text" name="name" placeholder='Apelido' autoComplete='off' value={form.name} onChange={onChangeForm} />
                         </FormControl>
                         <FormControl id="email">
                             <Input type="text" name="email" placeholder='E-mail' autoComplete='off' value={form.email} onChange={onChangeForm} />
