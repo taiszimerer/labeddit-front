@@ -7,7 +7,7 @@ function App() {
     <>
       <ChakraProvider>
         <Router />
-      </ChakraProvider>
+      </ChakraProvider>  
     </>
   );
 }
