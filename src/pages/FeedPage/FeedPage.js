@@ -126,7 +126,7 @@ export const FeedPage = () => {
                     <Text align={'center'} color={'#FF6489'}> ____________________________________________ </Text>
 
                     {posts && posts.map((post, index) => (
-                        <Box onClick={() => goToPostPage(navigate)} key={index} spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                        <Box onClick={() => goToPostPage(navigate, post.id)} key={index} spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
                             <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {post.creator_id} </Text>
 
                             <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{post.content}</Text>
