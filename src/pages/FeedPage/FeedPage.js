@@ -22,15 +22,15 @@ import axios from 'axios';
 
 export const FeedPage = () => {
     const navigate = useNavigate()
-    const [text, setText] = useState('') //amrazena texto digitado no post
-    let [posts, setPosts] = useState([]) //armazena pagina de posts (inicialmente vazia)
+    const [text, setText] = useState('') //armazena texto digitado no post
+    const [posts, setPosts] = useState([]) //armazena pagina de posts (inicialmente vazia)
 
     const onChangeText = (event) => {  //função atualiza o post ao digitar
         console.log(event.target.value)
         setText(event.target.value)
     }
 
-    const getPosts = async () => {
+    const getPosts = async () => {    //função que faz a requisição e atualiza array posts
         try {
             const config = {
                 headers: {
@@ -39,44 +39,40 @@ export const FeedPage = () => {
             }
             const response = await axios.get(`${BASE_URL}/posts`, config)
             setPosts(response.data)
-
         } catch (error) {
             console.log(error)
         }
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async () => {   // função que grava na API os novos posts feitos.
         try {
             const body = {
                 content: text
             }
-
             const response = await axios.post(
                 `${BASE_URL}/posts`, body
             )
-
             window.localStorage.setItem("token-labeddit", response.data.token)
-
         } catch (error) {
             console.log(error)
             window.alert("Erro ao realizar post")
         }
     }
 
-    const logout = () => {
+    const logout = () => {       //função para sair da aplicação
         window.localStorage.removeItem("token-labeddit")
         goToLoginPage(navigate)
     }
 
-    useEffect(() => {       //função que só aceita entrada no feed com login realizado!
+    useEffect(() => {       //função que só aceita entrada no feed se tiver login realizado!
         const token = window.localStorage.getItem("token-labeddit")
         if (!token) {
             goToLoginPage(navigate)
-        } 
+        }
     }, [])
 
-    useEffect(() => {   
-       getPosts()
+    useEffect(() => {    // efeito colateral para renderização de posts. Necessario MAP também :)
+        getPosts()
     }, [])
 
     console.log(posts)
@@ -122,15 +118,13 @@ export const FeedPage = () => {
                         </Box>
 
                         <Stack spacing={2} margin={'2px'} marginTop={'12px'}>
-                            <Button type="submit" bg={'#ff7141'} color={'white'} borderRadius={'12px'} fontSize={'18px'}
-                                >
+                            <Button type="submit" bg={'#ff7141'} color={'white'} borderRadius={'12px'} fontSize={'18px'}>
                                 Postar
                             </Button>
                         </Stack>
                     </form>
                     <Text align={'center'} color={'#FF6489'}> ____________________________________________ </Text>
 
-                    {console.log(posts)}
                     {posts && posts.map((post, index) => (
                         <Box onClick={() => goToPostPage(navigate)} key={index} spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
                             <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {post.creator_id} </Text>
