@@ -19,7 +19,7 @@ import { goToFeedPage, goToSignupPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
 
 export const LoginPage = () => {
-    const context = useContext(GlobalContext)
+
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [form, setForm] = useState({
@@ -31,11 +31,6 @@ export const LoginPage = () => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    useEffect(() => {
-        if (context.isAuth) {     //se a pessoa esta logada...
-            goToFeedPage(navigate)
-        }
-    })
 
     const login = async () => {
         try {
@@ -53,7 +48,6 @@ export const LoginPage = () => {
             window.alert("login realizado com sucesso!")
 
             setIsLoading(false)
-            context.setIsAuth(true)
             goToFeedPage(navigate)
         } catch (error) {
             console.log(error)
