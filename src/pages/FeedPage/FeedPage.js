@@ -44,7 +44,7 @@ export const FeedPage = () => {
         }
     }
 
-    const handleSubmit = async () => {   // função que grava na API os novos posts feitos.
+    const handleSubmitPost = async () => {   // função que grava na API os novos posts feitos.
         try {
             const body = {
                 content: text
@@ -110,7 +110,7 @@ export const FeedPage = () => {
                         </Stack>
                     </Stack>
 
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmitPost}>
                         <Box spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'30px'} >
                             <FormControl id="new-post" >
                                 <Input type="content" value={text} onChange={onChangeText} name="content" placeholder='Escreva seu post...' autoComplete='off' fontSize={'18px'} />

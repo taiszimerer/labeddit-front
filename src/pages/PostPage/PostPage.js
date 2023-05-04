@@ -23,14 +23,15 @@ import { BASE_URL } from '../../constants/BASE_URL';
 export const PostPage = (props) => {
     const params = useParams()
     const navigate = useNavigate()
-    const { post } = props;
-    const [ detailsPost, setDetailsPost ] = useState({})
+    const [detailsPost, setDetailsPost] = useState([{}])
+    const [responsePost, setResponsePost] = useState([])
 
-    useEffect (() => {
+    useEffect(() => {
         getDetailsPost()
+        handleSubmitResponse()
     }, [])
 
-    const getDetailsPost = async () => {   //requisição autenticada para buscar o 
+    const getDetailsPost = async () => {   //requisição autenticada para buscar o detalhe do post
         try {
             const config = {
                 headers: {
@@ -43,11 +44,26 @@ export const PostPage = (props) => {
             console.log(error)
         }
     }
-    console.log(detailsPost)
+
+    const handleSubmitResponse = async () => {  
+        try {
+            const config = {
+                headers: {
+                    Authorization: window.localStorage.getItem("token-labeddit")
+                }
+            }
+            const response = await axios.post(`${BASE_URL}/posts/${params.id}/comments`, config)
+            setDetailsPost(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const logout = () => {
         window.localStorage.removeItem("token-labeddit")
         goToLoginPage(navigate)
     }
+
 
     return (
         <>
@@ -83,25 +99,26 @@ export const PostPage = (props) => {
                                 > Logout</Link>
                             </Stack>
                         </Stack>
+                        {console.log(detailsPost[0])}
+                        { detailsPost ? ( <Box spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                            <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {detailsPost[0].creator_id} </Text>
 
-                        {/* <Box onClick={() => goToPostPage(navigate, post.id)}  spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
-                        <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {post.creator_id} </Text>
+                            <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{detailsPost[0].content} </Text>
 
-                        <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{post.content}</Text>
+                            <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
+                                <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
+                                    <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'} >{detailsPost[0].comments}</Text>
+                                    <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
+                                </Stack>
 
-                        <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
-                            <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
-                                <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
-                                <Text fontSize={'9.8px'} color={'#6F6F6F'} >{post.likes}</Text>
-                                <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
+                                <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} >
+                                    <Image src={coment} width={'18px'} marginLeft={'15px'} cursor={'pointer'} />
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'}>{detailsPost[0].likes}</Text>
+                                </Stack>
                             </Stack>
-
-                            <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} >
-                                <Image src={coment} width={'18px'} marginLeft={'15px'} cursor={'pointer'} />
-                                <Text fontSize={'9.8px'} color={'#6F6F6F'}>{post.comments}</Text>
-                            </Stack>
-                        </Stack>
-                    </Box> */}
+                        </Box> ) : (
+                        <Text>nao há nada em detailsPost</Text> ) }
 
 
                         <Stack spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'12px'} >
@@ -117,25 +134,10 @@ export const PostPage = (props) => {
                         </Stack>
 
                         <Text align={'center'} color={'#FF6489'}> _________________________________________ </Text>
-                        {/* 
-                    <Box onClick={() => goToPostPage(navigate, post.id)}  spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
-                        <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {post.creator_id} </Text>
 
-                        <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{post.content}</Text>
 
-                        <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
-                            <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
-                                <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
-                                <Text fontSize={'9.8px'} color={'#6F6F6F'} >{post.likes}</Text>
-                                <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
-                            </Stack>
 
-                            <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} >
-                                <Image src={coment} width={'18px'} marginLeft={'15px'} cursor={'pointer'} />
-                                <Text fontSize={'9.8px'} color={'#6F6F6F'}>{post.comments}</Text>
-                            </Stack>
-                        </Stack>
-                    </Box> */}
+
                     </Box>
                 </Stack>
             </Flex>
