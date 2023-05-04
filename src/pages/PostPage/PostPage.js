@@ -16,12 +16,34 @@ import coment from "../../icons/coment.png"
 import { useNavigate, useParams } from 'react-router-dom';
 import { goToLoginPage, goToPostPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { BASE_URL } from '../../constants/BASE_URL';
 
 export const PostPage = (props) => {
     const params = useParams()
     const navigate = useNavigate()
     const { post } = props;
+    const [ detailsPost, setDetailsPost ] = useState({})
 
+    useEffect (() => {
+        getDetailsPost()
+    }, [])
+
+    const getDetailsPost = async () => {   //requisição autenticada para buscar o 
+        try {
+            const config = {
+                headers: {
+                    Authorization: window.localStorage.getItem("token-labeddit")
+                }
+            }
+            const response = await axios.get(`${BASE_URL}/posts/${params.id}`, config)
+            setDetailsPost(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    console.log(detailsPost)
     const logout = () => {
         window.localStorage.removeItem("token-labeddit")
         goToLoginPage(navigate)
@@ -29,7 +51,7 @@ export const PostPage = (props) => {
 
     return (
         <>
-            {params.postId}
+            {params.id}
             <Flex
                 minH={'100vh'}
                 align={'center'}
