@@ -10,6 +10,6 @@ export const goToFeedPage = (navigator) => {
     navigator('/feed');
 }
 
-export const goToPostPage = (navigator) => {
-    navigator(`/post/:id`);  //${id}
+export const goToPostPage = (navigator, id) => {
+    navigator(`/post/${id}`); 
 }
