@@ -44,7 +44,8 @@ export const FeedPage = () => {
         }
     }
 
-    const handleSubmitPost = async () => {   // função que grava na API os novos posts feitos.
+    const handleSubmitPost = async (event) => {   // função que grava na API os novos posts feitos.
+        event.preventDefault()
         try {
             const body = {
                 content: text
@@ -53,6 +54,8 @@ export const FeedPage = () => {
                 `${BASE_URL}/posts`, body
             )
             window.localStorage.setItem("token-labeddit", response.data.token)
+            getPosts()
+            setText('')
         } catch (error) {
             console.log(error)
             window.alert("Erro ao realizar post")

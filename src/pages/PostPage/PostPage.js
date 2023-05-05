@@ -23,15 +23,15 @@ import { BASE_URL } from '../../constants/BASE_URL';
 export const PostPage = (props) => {
     const params = useParams()
     const navigate = useNavigate()
-    const [detailsPost, setDetailsPost] = useState([{}])
-    const [responsePost, setResponsePost] = useState([])
+    const [detailsPost, setDetailsPost] = useState([{}])  //estado so para armazenar detalhe do post e colocar em tela 
+    const [text, setText] = useState('') // estado para atualizar o que é digitado pelo usuario
+    const [commentPost, setCommentPost] = useState([])
 
-    useEffect(() => {
-        getDetailsPost()
-        handleSubmitResponse()
-    }, [])
+    const onChangeText = (event) => {  //função atualiza o post ao digitar
+        setText(event.target.value)
+    }
 
-    const getDetailsPost = async () => {   //requisição autenticada para buscar o detalhe do post
+    const getDetailsPost = async () => {   //requisição para buscar o post pelo ID e ser exibido na tela.
         try {
             const config = {
                 headers: {
@@ -45,15 +45,34 @@ export const PostPage = (props) => {
         }
     }
 
-    const handleSubmitResponse = async () => {  
+    const handleSubmitResponse = async (event) => {   // função que grava na API os novos comentarios/responses feitos pelo usuarios!!.
+        event.preventDefault()
+        try {
+            const body = {
+                content: text
+            }
+            const response = await axios.post(
+                `${BASE_URL}/posts/${params.id}/comments`, body
+            )
+            window.localStorage.setItem("token-labeddit", response.data.token)
+            getComments()
+            setText('') // limpa o input
+
+        } catch (error) {
+            console.log(error)
+            window.alert("Erro ao realizar post")
+        }
+    }
+
+    const getComments = async () => {    //função que faz a requisição dos commentarios feitos no post e atualiza array final de exibição (que vai ser exibido abaixo do botao response)
         try {
             const config = {
                 headers: {
                     Authorization: window.localStorage.getItem("token-labeddit")
                 }
             }
-            const response = await axios.post(`${BASE_URL}/posts/${params.id}/comments`, config)
-            setDetailsPost(response.data)
+            const response = await axios.get(`${BASE_URL}/posts/${params.id}/comments`, config)
+            setCommentPost(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -64,10 +83,14 @@ export const PostPage = (props) => {
         goToLoginPage(navigate)
     }
 
+    useEffect(() => {
+        getDetailsPost()
+        getComments()
+    }, [])
 
     return (
         <>
-            {params.id}
+            {/* {params.id} */}
             <Flex
                 minH={'100vh'}
                 align={'center'}
@@ -99,8 +122,7 @@ export const PostPage = (props) => {
                                 > Logout</Link>
                             </Stack>
                         </Stack>
-                        {console.log(detailsPost[0])}
-                        { detailsPost ? ( <Box spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                        <Box spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
                             <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {detailsPost[0].creator_id} </Text>
 
                             <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{detailsPost[0].content} </Text>
@@ -108,36 +130,49 @@ export const PostPage = (props) => {
                             <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
                                 <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
                                     <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
-                                    <Text fontSize={'9.8px'} color={'#6F6F6F'} >{detailsPost[0].comments}</Text>
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'} >{detailsPost[0].likes}</Text>
                                     <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
                                 </Stack>
 
                                 <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} >
                                     <Image src={coment} width={'18px'} marginLeft={'15px'} cursor={'pointer'} />
-                                    <Text fontSize={'9.8px'} color={'#6F6F6F'}>{detailsPost[0].likes}</Text>
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'}>{detailsPost[0].comments}</Text>
                                 </Stack>
                             </Stack>
-                        </Box> ) : (
-                        <Text>nao há nada em detailsPost</Text> ) }
+                        </Box>
 
 
-                        <Stack spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'12px'} >
-                            <FormControl id="new-coment">
-                                <Input type="text" name="new-coment" placeholder='Adicionar comentário' autoComplete='off' fontSize={'18px'} />
-                            </FormControl>
-                        </Stack>
+                        <form onSubmit={handleSubmitResponse}>
+                            <Box spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'30px'} >
+                                <FormControl id="new-post" >
+                                    <Input type="content" value={text} onChange={onChangeText} name="content" placeholder='Adicione um comentário' autoComplete='off' fontSize={'18px'} />
+                                </FormControl>
+                            </Box>
 
-                        <Stack spacing={2} margin={'2px'} marginTop={'12px'}>
-                            <Button bg={'#ff7141'} color={'white'} borderRadius={'12px'} fontSize={'18px'}>
-                                Responder
-                            </Button>
-                        </Stack>
+                            <Stack spacing={2} margin={'2px'} marginTop={'12px'}>
+                                <Button type="submit" bg={'#ff7141'} color={'white'} borderRadius={'12px'} fontSize={'18px'} onClick={handleSubmitResponse}>
+                                    Comentar
+                                </Button>
+                            </Stack>
+                        </form>
+                        <Text align={'center'} color={'#FF6489'}> ____________________________________________ </Text>
 
-                        <Text align={'center'} color={'#FF6489'}> _________________________________________ </Text>
+                        {commentPost && commentPost.map((post, index) => (
+                            <Box onClick={() => goToPostPage(navigate, post.id)} key={index} spacing={2} margin={'2px'} marginTop={'26px'} bg={'#FBFBFB'} borderRadius={'12px'} border={'1px solid #E0E0E0'} maxH={'200px'}>
+                                <Text color={'#6F6F6F'} fontFamily={'IBM Plex Sans'} fontWeight={'400'} fontSize={'12px'} margin={'9px'}> Enviado por: {post.creator_id} </Text>
 
+                                <Text color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{post.content}</Text>
 
+                                <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
+                                    <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
+                                        <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
+                                        <Text fontSize={'9.8px'} color={'#6F6F6F'} >{post.likes}</Text>
+                                        <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
+                                    </Stack>
 
-
+                                </Stack>
+                            </Box>
+                        ))}
                     </Box>
                 </Stack>
             </Flex>
