@@ -13,14 +13,15 @@ import group from "../../icons/group.png"
 import setaparacima from "../../icons/setaparacima.png"
 import setaparabaixo from "../../icons/setaparabaixo.png"
 import coment from "../../icons/coment.png"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { goToLoginPage, goToPostPage } from '../../routes/coordinator';
 import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
 import { BASE_URL } from "../../constants/BASE_URL"
 import axios from 'axios';
 
-export const FeedPage = () => {
+export const FeedPage = (props) => {
+    const params = useParams()
     const navigate = useNavigate()
     const [text, setText] = useState('') //armazena texto digitado no post
     const [posts, setPosts] = useState([]) //armazena pagina de posts (inicialmente vazia)
@@ -134,14 +135,16 @@ export const FeedPage = () => {
 
                             <Text onClick={() => goToPostPage(navigate, post.id)} color={'#000000'} fontSize={'18px'} margin={'9px'} lineHeight={'23.4px'} cursor={'pointer'}>{post.content}</Text>
 
-                            <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
+                            <Stack onClick={() => goToPostPage(navigate, post.id)} flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
                                 <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
-                                    <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
+                                    <Image src={setaparacima} width={'18px'} cursor={'pointer'}  />
                                     <Text fontSize={'9.8px'} color={'#6F6F6F'} >{post.likes}</Text>
                                     <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'} >{post.dislikes}</Text>
+
                                 </Stack>
 
-                                <Stack onClick={() => goToPostPage(navigate, post.id)} padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} cursor={'pointer'}>
+                                <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} cursor={'pointer'}>
                                     <Image src={coment} width={'18px'} marginLeft={'15px'} cursor={'pointer'} />
                                     <Text fontSize={'9.8px'} color={'#6F6F6F'}>{post.comments}</Text>
                                 </Stack>

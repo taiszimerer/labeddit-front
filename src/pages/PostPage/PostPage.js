@@ -73,6 +73,44 @@ export const PostPage = (props) => {
             }
             const response = await axios.get(`${BASE_URL}/posts/${params.id}/comments`, config)
             setCommentPost(response.data)
+            getDetailsPost()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const [like, setLike] = useState(false);
+    const [dislike, setDislike] = useState(false);
+
+    const addLikes = async () => {
+        // faz a requisição para dar like
+        try {
+            const config = {
+                headers: {
+                    Authorization: window.localStorage.getItem("token-labeddit")
+                }
+            }
+            const response = await axios.put(`${BASE_URL}/posts/${params.id}/like`, config)
+            setLike(true)
+            getDetailsPost()
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const addDislikes = async () => {
+        // faz a requisição para dar dislike
+        try {
+            const config = {
+                headers: {
+                    Authorization: window.localStorage.getItem("token-labeddit")
+                }
+            }
+            const response = await axios.put(`${BASE_URL}/posts/${params.id}/dislike`, config)
+            setDislike(true)
+            getDetailsPost()
+            console.log(response.data)
         } catch (error) {
             console.log(error)
         }
@@ -129,9 +167,11 @@ export const PostPage = (props) => {
 
                             <Stack flexDirection={'row'} gap={'5px'} margin={'10px 2px'}>
                                 <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} align={'center'} gap={'10px'} flexDirection={'row'} >
-                                    <Image src={setaparacima} width={'18px'} cursor={'pointer'} />
+                                    <Image src={setaparacima} width={'18px'} cursor={'pointer'} onClick={addLikes}/>
                                     <Text fontSize={'9.8px'} color={'#6F6F6F'} >{detailsPost[0].likes}</Text>
-                                    <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} />
+                                    <Image src={setaparabaixo} width={'18px'} cursor={'pointer'} onClick={addDislikes}/>
+                                    <Text fontSize={'9.8px'} color={'#6F6F6F'} >{detailsPost[0].dislikes}</Text>
+
                                 </Stack>
 
                                 <Stack padding={'1.5'} margin={'2'} borderRadius={'12px'} border={'1px solid #E0E0E0'} width={'100px'} height={'35px'} flexDirection={'row'} align={'center'} gap={'10px'} >
