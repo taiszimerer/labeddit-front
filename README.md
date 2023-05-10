@@ -38,7 +38,7 @@ Este projeto está em desenvolvimento.
 https://github.com/taiszimerer/labeddit-front
 
 #### Deploy Frontend do projeto: 
-t-labeddit.surge.sh
+https://t-labeddit.surge.sh
 
 ### Repositorio backend do projeto: 
 https://github.com/taiszimerer/labeddit-backend
