@@ -30,10 +30,6 @@ Após a instalação das dependências, execute o seguinte comando para rodar o 
 'Npm start' 
 ```
 
-
-#### Status do Projeto
-Este projeto está em desenvolvimento.
-
 #### Repositório Frontend do projeto:
 https://github.com/taiszimerer/labeddit-front
 
