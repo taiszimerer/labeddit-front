@@ -4,12 +4,10 @@ import {
     Text,
     Stack,
     Image,
-    Link,
     FormControl,
     Input,
     Button
 } from '@chakra-ui/react';
-import group from "../../icons/group.png"
 import setaparacima from "../../icons/setaparacima.png"
 import setaparabaixo from "../../icons/setaparabaixo.png"
 import coment from "../../icons/coment.png"
@@ -19,10 +17,12 @@ import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
 import { BASE_URL } from "../../constants/BASE_URL"
 import axios from 'axios';
+import Logout from '../../components/Logout';
 
 export const FeedPage = (props) => {
     const params = useParams()
     const navigate = useNavigate()
+    
     const [text, setText] = useState('') //armazena texto digitado no post
     const [posts, setPosts] = useState([]) //armazena pagina de posts (inicialmente vazia)
 
@@ -63,11 +63,6 @@ export const FeedPage = (props) => {
         }
     }
 
-    const logout = () => {       //função para sair da aplicação
-        window.localStorage.removeItem("token-labeddit")
-        goToLoginPage(navigate)
-    }
-
     useEffect(() => {       //função que só aceita entrada no feed se tiver login realizado!
         const token = window.localStorage.getItem("token-labeddit")
         if (!token) {
@@ -90,29 +85,7 @@ export const FeedPage = (props) => {
             <Stack spacing={8} maxW={'428px'} py={12} px={6}>
                 <Box rounded={'lg'} bg={'#FFFFFF'} p={8} >
                     <Header />
-                    <Stack marginLeft={'-32px'} marginTop={'-80px'} bg={'#E5E5E5'} flexDirection={'row'} height={'50px'} width={'400px'} align={'center'}>
-                        <Stack >
-                            <Image
-                                src={group}
-                                width={'28.6px'}
-                                height={'28px'}
-                                marginTop={'10px'}
-                                marginLeft={'160px'}
-                                alt="icon-labEddit"
-                            />
-                        </Stack>
-                        <Stack>
-                            <Link
-                                fontSize={'18px'}
-                                color={'#4088CB'}
-                                fontWeight={'600'}
-                                marginLeft={'120px'}
-                                marginRight={'10px'}
-                                onClick={logout}
-                                cursor={'pointer'}
-                            > Logout </Link>
-                        </Stack>
-                    </Stack>
+                    <Logout />
 
                     <form onSubmit={handleSubmitPost}>
                         <Box spacing={2} margin={'2px'} borderRadius={'12px'} bg={'#EDEDED'} height={'131px'} marginTop={'30px'} >
